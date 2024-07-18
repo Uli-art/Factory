@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Questions{% endblock %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Questions</title>
+    <link rel="stylesheet" href="{% static 'styles/questions.css' %}">
+</head>
+<body>
+<div align="center">
+    <div class="questions_container">
+        <div class="questions">
+            <section>
+                <p>This section provides answers to frequently asked questions from visitors to your future site. Using this section will reduce the burden on operators and increase the satisfaction of your customers.</p>
+            </section>
+            <div align="justify">
+                <details open>
+                    <summary><strong>What are these toys made out of?</strong> <time style="color:#808080; font-size:12px">2023-09-09</time></summary>
+                    <p>Yes! Our toys are tested by a U.S. based independent testing lab. They meet or exceed the Consumer Product Safety Commission (CPSC) standards and the American Society for Testing and Materials requirements (ASTM-F963) for the US and Canada. They also have passed the rigorous EN-71 testing for the EU markets, as well as Japan, Australia and New Zealand.</p>
+                </details>
+                <details open>
+                    <summary> <strong>How do I clean these toys?</strong> <time style="color:#808080; font-size:12px">2023-08-23</time></summary>
+                    <p>These toys are sink washable in warm water with ordinary dish soap. You can also use a mild bleach solution ( 1 cup/gallon of water ) Rinse thoroughly. We do not recommend putting them in the dishwasher, because the heat cycle may warp the shapes.</p>
+                </details>
+                <details open>
+                    <summary><strong>What are these toys made out of?</strong> <time style="color:#808080; font-size:12px">2022-12-01</time></summary>
+                    <p>Our toys are made out of an innovative material called Wood Plastic Composite (WPC). The material combines sawdust or other organic material like flax, rice hulls or coconut shells, with safe, certified plastic. The result is a product which is more substantial, durable and wood-like than 100% plastic toys. In fact, WPC is so durable that it is now commonly used in backyard decks and outdoor construction, with the look and feel of real lumber. The bottom line is we are replacing 30% of the plastic with organic fillers. The plastic we use is Polypropylene, which is one of the safest plastics in existence. The wood fiber is mixed in with the plastic , so that when the part is finished, the outer surface is the plastic, with the wood fiber inside.</p>
+                </details>
+                <details open>
+                    <summary><strong>Are these toys recyclable?</strong> <time style="color:#808080; font-size:12px">2023-03-17</time></summary>
+                    <p>WPC can be recycled with other WPC's and re-used, but because it's so new, most localities have not set up a recycling stream for this material. As more WPC decking and building supplies come on the market, this will change, but for right now, the best way to recycle this, and any toy, is to give it a second life by donating it to someone who can use it. Many localities have organizations like Toys for Tots or Goodwill that will be happy to give your toys a new home. That's part of getting back to basics.</p>
+                </details>
+            </div>
+        </div>
+
+        <div id="shift-left">
+            <div class="cards-left">
+                {% for product in products_list1 %}
+                <div class="card">
+                    <img class="card_image" src={{product.image}} alt="">
+                    <div class="card_content">
+                        <div class="product_name"><b>{{product.name}}</b></div>
+                        <div class="product_code">Code: {{product.code}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="shift-right">
+            <div class="cards-right">
+                {% for product in products_list2 %}
+                <div class="card">
+                    <img class="card_image" src={{product.image}} alt="">
+                    <div class="card_content">
+                        <div class="product_name"><b>{{product.name}}</b></div>
+                        <div class="product_code">Code: {{product.code}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+{% endblock %}

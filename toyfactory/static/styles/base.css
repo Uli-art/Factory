@@ -1,0 +1,183 @@
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #212529;
+	display: flex;
+}
+
+nav li {
+  float: left;
+}
+
+nav li:last-child {
+  	float: right;
+	border: none;
+}
+
+nav li:nth-child(14) {
+	float: right;
+	border: none;
+}
+
+nav li a{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li span{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+}
+
+#logo_title {
+	font-size: 20px;
+	border-right:1px solid #bbb;
+}
+
+nav li > a > span{
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.log_inout_button {
+	border: 1px solid grey;
+	border-radius: 20%;
+}
+
+nav li a:hover:not(.active) {
+  	background-color: rgba(36, 112, 36, 0.78);
+	color: black;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.text {
+    color: green;
+}
+
+.requisites {
+    font-family: Verdana,Geneva,sans-serif;
+}
+
+#social_media {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-button {
+	background-color: rgba(234, 234, 234, 0.89);
+	border-radius: 50%;
+	font-size: 25px;
+	height: 3.6rem;
+	line-height: 3.6rem;
+	position: relative;
+	text-align: center;
+	width: 3.6rem;
+    margin: 2%;
+}
+
+.icon-button span {
+	height: 0;
+    width: 0;
+	position: absolute;
+	top: 50%;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+}
+
+.icon-button:hover span {
+	width: 3.6rem;
+	height: 3.6rem;
+	border-radius: 3.6rem;
+	margin: -1.8rem;
+}
+
+.pinterest span {
+	background-color: #b62d2d;
+}
+.facebook span {
+	background-color: #3B5998;
+}
+.instagram span {
+	background-color: #bc2a8d;
+}
+
+.icon-button i {
+	height: 3.6rem;
+    line-height: 3.6rem;
+    width: 3.6rem;
+	left: 0;
+	position: absolute;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	z-index: 1;
+}
+
+.icon-button .fa-facebook {
+	color: #3B5998;
+}
+
+.icon-button .fa-instagram {
+	color: #4099ff;
+}
+
+.icon-button .fa-pinterest {
+	color: #c20909;
+}
+
+.icon-button:hover .fa-facebook,
+.icon-button:hover .fa-pinterest,
+.icon-button:hover .fa-instagram{
+	color: white;
+}
+
+@media only screen and (max-width: 800px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0.5rem;
+    }
+
+    nav li {
+        padding: 0.5rem 0;
+        text-align: center;
+    }
+
+    nav li a {
+        border: none;
+    }
+
+    header h1 {
+        text-align: center;
+    }
+
+	.sticky_navbar {
+		position: static;
+		z-index: -1;
+	}
+}
+

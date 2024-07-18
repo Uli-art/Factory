@@ -1,0 +1,49 @@
+
+#dialog {
+    margin-top: 2%;
+}
+
+#person_1 {
+    float: left;
+    margin: 0;
+    width: 20%;
+}
+
+#person_2 {
+    float: right;
+    margin: 0;
+    width: 20%;
+}
+
+#dialog_1 {
+    float: left;
+    height:100px;
+    width: 200px;
+    background-color:#E1EEFF;
+    border-radius: 25px 25px 25px 0;
+    padding: 30px;
+    margin-left: 1%;
+}
+
+#dialog_2 {
+    float: right;
+    height:100px;
+    width: 250px;
+    background-color:#E1EEFF;
+    border-radius: 25px 25px 0 25px;
+    padding:20px;
+    margin-right: 1%;
+}
+
+p {
+    font-family: monospace, "Lucida Console";
+}
+
+#vacancies {
+    clear: both;
+}
+
+p::selection {
+    color: green;
+    background-color: rgba(222, 222, 222, 0.67);
+}

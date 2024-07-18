@@ -1,0 +1,120 @@
+.form_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    height: 100%;
+    background-color: rgba(238, 253, 238, 0.91);
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+
+#form_description {
+    margin: 2%;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 18px;
+}
+
+form button {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: white;
+    background-color: green;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+form button:hover {
+    background-color: #005400;
+}
+
+fieldset > small {
+    color:#808080;
+}
+
+fieldset > input {
+    margin: 5px;
+}
+
+
+.checkbox_rect input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox_rect input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 30px;
+    font: 17px "Open Sans", Arial, sans-serif;
+    cursor: pointer;
+}
+
+.checkbox_rect input[type="checkbox"]:hover + label:hover {
+    color: green;
+}
+
+.checkbox_rect input[type="checkbox"] + label:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 1px solid #343a3f;
+    border-radius: 15%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 2px 1px 0 #343a3f;
+    background: #f3f3f3;
+}
+
+.checkbox_rect input[type="checkbox"]:checked + label:before {
+    border: 2px solid #fff;
+    border-radius: 20%;
+    background: green;
+    box-shadow: 2px 1px 0 #50565a;
+}
+
+#changingStyle {
+    width: fit-content;
+    padding: 15px;
+    flex-direction: column;
+    margin: 20px;
+    cursor: pointer;
+}
+
+#changingStyle button {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #005400;
+}
+
+#changingStyle div {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+#changingStyle input {
+    width: 35px;
+    height: 30px;
+    margin-left: 5px;
+    padding: 2px;
+}
+
+

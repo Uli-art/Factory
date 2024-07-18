@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+</head>
+<body>
+    <div>
+        <section class="container">
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <a class="slider_item" href="{% url 'about_us' %}"><img width="100%" id="slide-1" src="/static/toyfactory/images/banner.jpg" alt="toy factory" /></a>
+                    <a class="slider_item" href="{% url 'products' %}"><img width="100%" id="slide-2" src="/static/toyfactory/images/banner_2.jpg" alt="toy factory" /></a>
+                    <a class="slider_item" href="{% url 'reviews' %}"><img width="100%" id="slide-3" src="/static/toyfactory/images/banner_3.jpg" alt="toy factory" /></a>
+                </div>
+            </div>
+             {% if user.is_superuser %}
+            <form id="intervalForm">
+                <input type="number" id="rotationSpeed" onclick="changeSpeed()" min="1" value="4">
+            </form>
+            {% endif %}
+        </section>
+
+       <br>
+
+       <div align="center">
+           <div style="width:80%">
+               <div align="justify">
+                   <section>
+                       <table cellpadding="10">
+                           <tr>
+                                <td>
+                                   <img id="owner_image" src="/static/toyfactory/images/owner.webp" alt="owner" width="100%">
+                                </td>
+                                <td>
+                                    <blockquote>
+                                        <p>"I loved toy trucks and trains as a kid. Now, as an adult, it makes me so happy to be able to create the kind of toys I remember spending hours with, for the next generation.</p>
+                                        <p>To partner with my dad, Jim and make toys with sustainable materials right here in our American toy factory is even better!</p>
+                                        <p>Our toys truly embody 'from our family to yours' - something we are incredibly proud of."</p>
+                                        <cite>— Luke Barber - founder of the company</cite>
+                                    </blockquote>
+                                    <audio controls>
+                                        <source src="/static/toyfactory/audio/interview.mp3"/>
+                                        Audio content cannot be played
+                                    </audio>
+                                </td>
+                           </tr>
+                       </table>
+                   </section>
+
+                   <br>
+
+                   <section>
+                       <video width="100%" autoplay="autoplay" loop="loop">
+                           <source src="/static/toyfactory/video/video_factory.mp4"/>
+                           Video content cannot be played
+                       </video>
+                   </section>
+
+                   <br>
+
+                   <section>
+                       <h3>Partners</h3>
+
+                       <br>
+
+                       <div class="row" align="center">
+                           <div class="parent">
+                               <div class="dotted first"><a href="https://tide.com/en-us" target="_blank" ><img class="rounded" src="static/toyfactory/images/partner_8.png" alt="partner_1"></a></div>
+                               <h6 class="company_name">Tide</h6>
+                               <q>Tide's in, dirt's out.</q>
+                           </div>
+                           <div class="parent">
+                               <div class="dotted first"><a href="https://www.hp.com/us-en/home.html" target="_blank" ><img class="rounded" src="static/toyfactory/images/partner_10.png" alt="partner_1"></a></div>
+                               <h6 class="company_name">HP</h6>
+                               <q>The computer is personal again.</q>
+                           </div>
+                           <div class="parent">
+                               <div class="dotted first"><a href="https://www.pinterest.com/" target="_blank" ><img class="rounded" src="static/toyfactory/images/partner_9.png" alt="partner_1"></a></div>
+                               <h6 class="company_name">Pinterest</h6>
+                               <q>Recipes, crafts and inspirational quotes.</q>
+                           </div>
+                           <div class="parent">
+                               <div class="dotted first"><a href="https://www.starbucks.com/" target="_blank" ><img class="rounded" src="static/toyfactory/images/partner_11.png" alt="partner_1"></a></div>
+                               <h6 class="company_name">Starbucks</h6>
+                               <q>It's not just coffee, it's Starbucks.</q>
+                           </div>
+                           <div class="parent">
+                               <div class="dotted">
+                                   <a href="https://www.bk.com/" target="_blank" ><img class="rounded" src="static/toyfactory/images/partner_12.png" alt="partner_1"></a>
+                               </div>
+                               <h6 class="company_name">Burger King</h6>
+                               <q>Have it your way.</q>
+                           </div>
+                       </div>
+                   </section>
+
+               </div>
+           </div>
+       </div>
+
+        <div class="latest_news">
+            <h3>Latest News!</h3>
+            <table>
+                <tr>
+                    <td align="right" style="width:40%">
+                        <img src="/static/toyfactory/images/news_1.webp" alt="img_for_news_1" width="60%">
+                    </td>
+                    <td>
+                        <h5>Review of new items from Lego - Star-Lord's Helmet</h5>
+                        <small><time style="color:#808080"></time>2023-09-09</small>
+                        <a href="/toyfactory/news" id="read_more"><b>Read more</b></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</body>
+<script src="/static/scripts/banner_rotation.js"></script>
+{% endblock %}

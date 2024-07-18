@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Coupons{% endblock %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+    <link rel="stylesheet" href="{% static 'styles/coupons.css' %}">
+</head>
+<body>
+  <div>
+    <div align="center">
+
+      <div style="width:40%">
+        {% for item in coupons %}
+        <div align="justify" class="coupons_list">
+          <div class="coupon">
+            <img src={{item.image}} alt="sales" width="100%">
+            <h2 ><b>{{item.title}}</b></h2>
+            <p >{{item.description}}</p>
+            <div>
+              {% if item.promo_code != null %}
+              <p>Use Promo Code: <strong class="promo_code">{{item.promo_code}}</strong></p>
+              {% endif %}
+              {% if item.date != null %}
+              <p>Expires: <time>{{item.date}}</time></p>
+              {% endif %}
+            </div>
+          </div>
+          <hr>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</body>
+<script src="/static/scripts/3D_effect.js"></script>
+{% endblock %}

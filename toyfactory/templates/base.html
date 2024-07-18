@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{# Load the tag library #}
+{% load bootstrap5 %}
+{% load static %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<head>
+  <title>Toy Factory</title>
+  <meta charset="utf-8" />
+  <meta name="author" content="Sidorova Ulyana" />
+  <meta name="description" content="Project Toy Factory for subject Modern Development Technologies for Web-application" />
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/base.css' %}">
+  <link rel="icon" type="image/x-icon" href="/static/toyfactory/images/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+<body>
+<nav class="sticky_navbar">
+      <ul>
+        <li>
+          <a id="logo_title" href="{% url 'index' %}">Toy Factory</a>
+        </li>
+        <li>
+          <a  href="{% url 'products' %}">Products</a></li>
+        <li>
+          <a href="{% url 'news' %}">News</a>
+        </li>
+        <li>
+          <a href="{% url 'coupons' %}">Coupons</a>
+        </li>
+        <li>
+          <a href="{% url 'reviews' %}">Reviews</a>
+        </li>
+        <li>
+          <a href="{% url 'questions' %}">Questions</a>
+        </li>
+        <li>
+          <a href="{% url 'vacancies' %}">Vacancies</a>
+        </li>
+        <li>
+          <a href="{% url 'contacts' %}">Contact us</a>
+        </li>
+        <li>
+          <a href="{% url 'about_us' %}">About us</a>
+        </li>
+        <li>
+          <a href="{% url 'privacy_policy' %}">Privacy policy</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+          <a href="{% url 'orders' %}">Orders</a>
+        </li>
+        {% endif %}
+        {% if user.is_superuser %}
+        <li>
+          <a href="{% url 'stat' %}">Statistics</a>
+        </li>
+        <li>
+          <a href="{% url 'api-root' %}">API</a>
+        </li>
+        {% endif %}
+        <li>
+          <a href="{% url 'additional' %}">Additional</a>
+        </li>
+      {% if user.is_authenticated %}
+        <li>
+            <span>{% if request.user.get_full_name == "" %} {{user.username}} {% else %} {{user.get_full_name}} {% endif %}</span>
+        </li>
+        <li>
+          <a class="log_inout_button" href="/toyfactory/accounts/logout">LOGOUT</a>
+        </li>
+        {% else %}
+        <li>
+          <a class="log_inout_button" href="/toyfactory/accounts/login">LOGIN</a>
+        </li>
+        {% endif %}
+      </ul>
+</nav>
+
+<div class="bg-dark w-100">
+  <p class="fs-4 ms-2 text">{% block title %}{% endblock %}</p>
+</div>
+
+<div>
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+<footer class="bg-dark text-center text-white" style="margin-top: auto; position: relative">
+  <div align="center">
+    <div style="width:80%" >
+      <div align="justify">
+        <table cellpadding="10" width="100%">
+          <colgroup>
+            <col width="20%">
+            <col width="20%">
+            <col width="25%">
+            <col width="20%">
+            <col width="25%">
+          </colgroup>
+          <tr>
+            <th id="logo"></th>
+            <th id="contacts">
+              Contacts
+            </th>
+            <th id="address">
+              Address
+            </th>
+            <th id="hours">
+              Working hours
+            </th>
+            <th id="follow">
+              Follow us
+            </th>
+          </tr>
+          <tr>
+            <td headers="logo" >
+              <img src="/static/toyfactory/images/logo.png" alt="logo" height="100" width="150">
+            </td>
+            <td headers="contacts" class="requisites">
+              <p><small>(210) 662 4888 Main Number</small></p>
+              <p><small>(800) 662-6236 Amusement</small></p>
+              <p><small>(866) 403-6555 Crane</small></p>
+            </td>
+            <td headers="address" class="requisites">
+              <small>1235 Gembler Road, San Antonio, Texas 78219</small>
+            </td>
+            <td headers="hours" class="requisites">
+              <small>Mon - Fri / 8:00AM - 6:00PM Central</small>
+            </td>
+            <td headers="follow" id="social_media">
+              <a href="https://www.instagram.com/thetoyfactoryshop" class="icon-button instagram" target="_blank"><i class="fab fa-instagram"></i><span></span></a>
+              <a href="https://web.facebook.com/thetoyfactoryshop" class="icon-button facebook" target="_blank"><i class="fab fa-facebook"></i><span></span></a>
+              <a href="https://za.pinterest.com/toyfactory" class="icon-button pinterest" target="_blank"><i class="fab fa-pinterest"></i><span></span></a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5" align="center">
+              <hr>
+              <p><small>&#169 Copyright 2023 Toy Factory, LLC. All Rights Reserved</small></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+</html>

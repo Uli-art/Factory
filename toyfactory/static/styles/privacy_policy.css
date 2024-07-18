@@ -1,0 +1,67 @@
+
+.privacy_policy {
+    text-indent: 1.5em;
+    margin: 2%;
+    border: 1px solid black;
+    border-radius: 3%;
+    padding: 1%;
+}
+
+#marked_ul > ul {
+    list-style: none;
+    padding: 0;
+}
+
+#marked_ul > ul li:before{
+    content: '\2764';
+    margin: 0 1em;
+}
+
+#download_link {
+    text-decoration: none;
+    font-family: "Quicksand", sans-serif;
+    color: #e0c03e;
+}
+
+#download_link:active {
+    color: black;
+}
+
+#download_link:visited {
+    color: #988c25;
+}
+
+#download_link:hover {
+    color: #4b5e2c;
+}
+
+#download_link button {
+    background-color: green;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    height: 48px;
+    padding: 10px 25px;
+    position: relative;
+}
+
+#download_link button:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 48px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+#download_link button:hover:after {
+    transform: translate(0, 0);
+}

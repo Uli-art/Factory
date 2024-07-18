@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}News{% endblock %}
+{% load static %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+    <link rel="stylesheet" href="{% static 'styles/article.css' %}">
+</head>
+<body>
+    <div align="center">
+        <div style="width:70%">
+            <div align="left">
+                {% for item in article %}
+                <h1>{{item.title}}</h1>
+                <small><time style="color:#808080">{{item.date}}</time></small>
+                <img src={{item.image}} alt=r"img_for_news_{{item.id}}" width="100%">
+                <hr>
+                <div align="center">
+                    <div class="article_text" style="width:90%">
+                        <div align="justify">
+                            <p>{{item.text}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <a href="{%url 'news'%}" id="back"><b> &#8592 Back to news</b></a>
+          </div>
+        </div>
+     </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Contact us{% endblock %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="{% static 'styles/contacts.css' %}">
+</head>
+<body>
+    <h2>Our Team!</h2>
+    <hr>
+    <section class="contacts">
+        <figure class="child">
+            <img src="/static/toyfactory/images/employee_1.jpeg" alt="employee_1" width="100%">
+            <figcaption>
+                <h4>Jo Vela</h4>
+                <p style="color:#808080">Chief Operating Officer</p>
+                <small>Jo Vela has been working as a Chief Operating Officer at Toy Factory for 7 years. Toy Factory is part of the Retail industry, and located in Texas, United States.</small>
+                <p><q lang="en">Great place to work for. They pay fairly and are willing to work with the needs of their employees in mind.</q></p>
+                <hr>
+                <p><em>(210) 662-4888</em></p>
+                <p><em>jovela_toyfactory@gmail.com</em></p>
+            </figcaption>
+        </figure>
+
+        <figure class="child">
+            <img src="/static/toyfactory/images/employee_2.jpeg" alt="employee_2" width="100%">
+            <figcaption>
+                <h4>Amy Hoffman</h4>
+                <p style="color:#808080">General Manager, Operations</p>
+                <small>Amy Hoffman has been working as a General Manager, Operations at Toy Factory for 31 years. Toy Factory is part of the Retail industry, and located in Texas, United States.</small>
+                <p><q lang="es">Es un ambiente de trabajo divertido con todos los diferentes productos que llegan aquí.</q></p>
+                <hr>
+                <p><em>(800) 662-6236</em></p>
+                <p><em>amyhoffman_toyfactory@gmail.com</em></p>
+            </figcaption>
+        </figure>
+
+        <figure class="child">
+            <img src="/static/toyfactory/images/employee_3.jpeg" alt="employee_3" width="100%">
+            <figcaption>
+                <h4>Richard Stoecklein</h4>
+                <p style="color:#808080">President</p>
+                <small>Richard Stoecklein has been working as a President at Toy Factory for 40 years. Toy Factory is part of the Retail industry, and located in Texas, United States.</small>
+                <p><q lang="en">I work with a team of highly motivated women who enjoy what they do.</q></p>
+                <hr>
+                <p><em>(866) 403-6555</em></p>
+                <p><em>richard_toyfactory@gmail.com</em></p>
+            </figcaption>
+        </figure>
+    </section>
+</body>
+</html>
+{% endblock %}

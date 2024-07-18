@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% else %}
+    <p>Please login to see this page.</p>
+  {% endif %}
+{% endif %}
+
+<div align="center">
+    <div class="col-md-3">
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <br>
+            <div class="bg-dark">
+              <p class="text-light fs-3 ms-2">Login</p>
+            </div>
+            <div class="mb-3 m-2">
+                <div align="justify"><label for="id_username" class="form-label">Username</label></div>
+              <input type="text" required class="form-control" id="id_username" name="username" placeholder="Type user name">
+            </div>
+            <div class="mb-3 m-2">
+                <div align="justify"><label for="id_password" class="form-label">Password</label></div>
+              <input type="password" required class="form-control" id="id_password" autocomplete="current-password" name="password" placeholder="Type password">
+            </div>
+            <button type="submit" class="btn m-2 btn-dark">Login</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+
+        {# Assumes you setup the password_reset view in your URLconf #}
+        <p class="m-2"><a class="link-primary" href="{% url 'password_reset' %}">Lost password?</a></p>
+    </div>
+</div>
+{% endblock %}

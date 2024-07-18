@@ -1,0 +1,74 @@
+
+#top{
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#top::before{
+    content:'';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height:200px;
+    width: 100%;
+    background:linear-gradient(to top,#fff,transparent);
+    z-index: 1000;
+}
+#spin1, #spin2{
+    top: inherit;
+    bottom: 0;
+}
+
+section img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+#text{
+    position: relative;
+    color:white;
+    font-size: 3rem;
+}
+
+
+
+#logo {
+    display:flex;
+    align-items:center;
+    transform: skewX(-10deg);
+}
+
+#title_text {
+    text-align: center;
+}
+
+#certificate {
+    border: 20px solid transparent;
+    padding: 1%;
+    margin: 2%;
+    width: 55%;
+    border-image: url("../../static/toyfactory/images/certificate/certificate_border.jpg") 5% round;
+    background-image: url("../../static/toyfactory/images/certificate/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+
+#name_of_company {
+    font-family: "Sofia", sans-serif;
+    font-style: oblique;
+    font-size: 200%;
+    background-image: linear-gradient(90deg, #b495ab, #27272a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

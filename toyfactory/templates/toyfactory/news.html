@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}News{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>News</title>
+        <link rel="stylesheet" href="{% static 'styles/news.css' %}">
+    </head>
+    <body>
+    <div id="countdown" class="countdown">
+        <div class="countdown-number">
+            <span class="hours countdown-time"></span>
+            <span class="countdown-text">Hours</span>
+        </div>
+        <div class="countdown-number">
+            <span class="minutes countdown-time"></span>
+            <span class="countdown-text">Minutes</span>
+        </div>
+        <div class="countdown-number">
+            <span class="seconds countdown-time"></span>
+            <span class="countdown-text">Seconds</span>
+        </div>
+    </div>
+    <div class="divide">
+        <div align="justify" class="menu">
+            <ul>
+                <li>Articles</li>
+                {% for article in news_list %}
+                <li><a href="#{{article.title}}">{{article.title}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div align="justify" class="articles">
+            {% for article in news_list %}
+            <div class="article">
+                <div><a name="{{article.title}}"><img src={{article.image}} alt=r"img_for_news_{{article.id}}"></a></div>
+                <div align="justify" class="article_info">
+                    <h5>{{article.title}}</h5>
+                    <small><time style="color:#808080">{{article.date}}</time></small>
+                    <div class="article_summary"><i>{{article.summary}}</i></div>
+                    <a href="{%url 'article' article.id %}" class="link">
+                        <span class="mask">
+                            <div class="link-container">
+                                <b><span class="link-title1 title">Read more &#8594</span>
+                                    <span class="link-title2 title">Read more &#8594</span></b>
+                            </div>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    </body>
+<script src="/static/scripts/timer.js"></script>
+</html>
+{% endblock %}

@@ -1,0 +1,43 @@
+
+#orders table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+caption{
+    padding: 10px;
+    caption-side: top;
+    font: 30px molot;
+    text-shadow: 2px 1px 1px #000;
+    text-align: center;
+}
+
+#orders th {
+    text-align: center;
+    border-bottom: 2px solid black;
+    background-color: white;
+    color: black;
+}
+
+#orders td:empty {
+    background-color: #ffe3e3;
+}
+
+#orders td {
+    padding: 1%;
+    text-align: center;
+    vertical-align: center;
+}
+
+#orders tr:nth-child(2) {
+    background-color: #ddffdb;
+}
+
+#orders tr:last-child {
+    color: white;
+    background-color: #3b3e42;
+}
+
+#orders td:not(:last-child) {
+    border-right: 1px solid black;
+}

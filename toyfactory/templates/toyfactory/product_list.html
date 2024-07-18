@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel="stylesheet" href="{% static 'styles/product_list.css' %}">
+</head>
+<div class="row w-100" >
+    <div>
+        <form id="couponForm">
+            {% csrf_token %}
+            <fieldset title="Coupon Form">
+                <h5>Enter coupon:</h5>
+                <input type="text" id="coupon">
+                <button type="submit" id="useCoupon" onclick="checkCoupon()">Use coupon</button>
+            </fieldset>
+
+    <script type="text/javascript">
+        let readersForm = document.getElementById("couponForm");
+        function handleForm(event) { event.preventDefault(); }
+        readersForm.addEventListener('submit', handleForm);
+
+        function checkCoupon() {
+            let enteredCouponElement = document.getElementById("coupon");
+            let allCoupons = {{coupons | safe}};
+
+            let enteredCoupon = enteredCouponElement.value;
+            let isFind = false;
+
+            let key;
+            for (key in allCoupons) {
+                if (enteredCoupon == key) {
+                    isFind = true;
+                    let enteredCouponElement = document.getElementsByClassName("product_price");
+                    let enteredPriceElement = document.getElementsByClassName("price");
+                    let i = 0;
+                    Array.prototype.forEach.call(enteredPriceElement, function (enteredPriceElement) {
+                        enteredPriceElement.style.textDecoration = "line-through";
+                        let bElement = document.createElement("b");
+                        bElement.innerHTML = parseInt(enteredPriceElement.innerHTML) * (100 - allCoupons[key]) / 100 + "$";
+                        bElement.style.color = "red";
+                        enteredCouponElement[i].appendChild(bElement);
+                        ++i;
+                    });
+                    alert("you received a " + allCoupons[key] + "% discount");
+                }
+            }
+            if (!isFind) {
+                let enteredCouponElement = document.getElementsByClassName("product_price");
+                let enteredNameElement = document.getElementsByClassName("name");
+                let enteredPriceElement = document.getElementsByClassName("price");
+                let i = 0;
+                let allProducts = {{product_list | safe}};
+                console.log(allProducts);
+                Array.prototype.forEach.call(enteredPriceElement, function (enteredPriceElement) {
+                    while (enteredCouponElement[i].firstChild) {
+                        enteredCouponElement[i].removeChild(enteredCouponElement[i].firstChild);
+                    }
+                    let bElement = document.createElement("b");
+                    bElement.innerHTML = allProducts[enteredNameElement[i].innerHTML] + "$";
+                    enteredPriceElement.style.fontWeight = "bold";
+                    enteredCouponElement[i].appendChild(bElement);
+                    ++i;
+                });
+                alert("No such coupon");
+            }
+        }
+    </script>
+        </form>
+    </div>
+    <div class="col-md-3 bg-light">
+        <div class="list-group m-2">
+            <a href="{% url 'products' %}" class="list-group-item list-group-item-action list-group-item-dark
+            {% if product_type is None %}active{% endif %}">Show All</a>
+            {% for type in product_type_list %}
+            <a href="{% url 'product_by_type' type.id %}"
+               class="list-group-item list-group-item-action list-group-item-light {% if type.id == product_type %}active{% endif %}"
+               {% if type.id == product_type %} aria-current="true" {% endif %}>{{ type.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="cards">
+            {% for product in object_list %}
+            <div class="card">
+                <img class="card_image" src={{product.image}} alt="">
+                <div class="card_content">
+                    <div class="product_name"><b class="name">{{product.name}}</b></div>
+                    <div class="product_code">Code: {{product.code}}</div>
+                    {% if product_type is None %}
+                    <p class="product_type">{{product.type}}</p>
+                    {% endif %}
+                    <div class="product_price"><b class="price">{{product.price}}</b><b>$</b></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

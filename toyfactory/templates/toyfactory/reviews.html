@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Reviews{% endblock %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="{% static 'styles/reviews.css' %}">
+</head>
+<body>
+<div align="center">
+    <div style="width:80%">
+        <div align="justify">
+
+            <div class="form_container">
+                {% if user.is_authenticated %}
+                <div id="form_description">
+                    <h2>Review Form</h2>
+                    <p>We would love to get feedback from you. Positive and negative feedback is welcomed. Please fill in the form.</p>
+                </div>
+
+                <div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <fieldset title="Review Form">
+                            <small>Date</small><br>
+                            <input disabled type="date" id="todayDate"><br>
+                            <script> document.getElementById("todayDate").valueAsDate = new Date();</script>
+                            <small>Rating</small><br>
+                            <input required type="number" name="rating" min="1" max="5"><br>
+                            <small>Message</small><br>
+                            <textarea type="text" name="text" placeholder="Feedback" cols="100" rows="10"></textarea><br>
+                            <small>Birth Date</small><br>
+                            <input type="date" id="birthDay" onchange="changeDate()"><br>
+                            <div class="checkbox_rect">
+                                <input required type="checkbox" id="checkbox_rect" name="check">
+                                <label for="checkbox_rect">Agree with private policy</label>
+                            </div>
+                            <button id="submitButton" disabled type="submit">Send</button>
+                        </fieldset>
+                    </form>
+                </div>
+                {%else%}
+                    <a href="/toyfactory/accounts/login"><button>Leave Feedback</button></a>
+                {%endif%}
+            </div>
+
+            <h2>Reviews</h2>
+            <table cellpadding="10">
+                {%for review in reviews%}
+                <tr>
+                    <td>
+                        <strong style="font-size:30px">{{review.rating}}</strong>
+                    </td>
+                    <td>
+                        <h5 id="client_name">{{review.clients_name}}</h5>
+                        <time id="review_date">{{review.date}}</time>
+                        {% if review.text %}
+                            <p id="review_text">{{review.text}}</p>
+                        {%endif%}
+                        <hr>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+</div>
+</body>
+<script src="/static/scripts/check_birth_day.js"></script>
+</html>
+{% endblock %}

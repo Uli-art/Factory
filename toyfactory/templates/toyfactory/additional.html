@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Additional{% endblock %}
+{% load static %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styles/additional.css' %}">
+</head>
+<body>
+<div>
+    <h2>Matrix</h2>
+    <form id="matrixForm">
+        {% csrf_token %}
+        <fieldset title="Matrix Form">
+        <small>Element count:</small>
+        <input type="number" id="elementCount" min="1" value="1">
+        <small>Selected element count:</small>
+        <input type="number" id="maxSelectedElements" min="1" value="1">
+        <button type="submit" id="transposeButton">Transpose</button>
+        <button type="submit" id="addElements">Add row/column</button>
+        </fieldset>
+    </form>
+
+    <table class="col-md-8" id="matrix">
+    </table>
+    <hr>
+
+    <div>
+        <div class="form_container">
+            <h2>Associative arrays</h2>
+        <form id="addReader">
+            {% csrf_token %}
+            <fieldset title="Array Form">
+                <small>Name</small><br>
+                <input type="text" name="text" id="name"><br>
+                <small>Surname</small><br>
+                <input type="text" name="text" id="surname"><br>
+                <small>Patronymic</small><br>
+                <input type="text" name="text" id="patronymic"><br>
+                <small>Number of reader book</small><br>
+                <input required type="number" id="numberOfReaderBook" min="1"><br>
+                <small>Date</small><br>
+                <input type="date" id="authorizationDate"><br>
+                <button id="submitButton" type="submit" onclick="AddReader()">Add</button>
+            </fieldset>
+        </form>
+            <table class="col-md-8" id="readers">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Patronymic</th>
+                    <th>Number of reader book</th>
+                    <th>Date</th>
+                </tr>
+                </thead>
+        </table>
+        </div>
+
+        <h5>The oldest reader:</h5>
+        <p id="oldestReader"></p>
+    </div>
+    <hr>
+    <h2>Changing style</h2>
+    <div class="checkbox_rect">
+        <input required type="checkbox" id="checkbox_rect" name="check">
+        <label for="checkbox_rect">Change style</label>
+        <div id="changingStyle">
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="/static/scripts/matrix.js"></script>
+<script src="/static/scripts/associative_array.js"></script>
+<script src="/static/scripts/change_styles.js"></script>
+</html>
+
+{% endblock %}

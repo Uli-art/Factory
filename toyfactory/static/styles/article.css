@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Roboto Regular";
+  src: url("../fonts/Roboto-Regular.ttf");
+}
+
+.article_text {
+    column-count: 3;
+    column-rule-style: double;
+    font-family: "Roboto Regular", serif;
+}
+
+#back {
+    text-decoration: none ;
+    align-items: center;
+    color: #e0c03e;
+    font-family: "Quicksand", sans-serif;
+}
+
+#back:visited {
+    color: #988c25;
+}
+
+#back:hover {
+    color: #4b5e2c;
+}
+

@@ -1,0 +1,20 @@
+
+.contacts {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row nowrap;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.child {
+    width: 30%;
+}
+
+q[lang="en"] {
+    quotes: "«" "»";
+}
+
+q[lang="es"] {
+    quotes: "“" "”";
+}
